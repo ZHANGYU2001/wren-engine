@@ -4,3 +4,5 @@ docs
 tests
 .pre-commit-config.yaml
 .env
+Dockerfile
+.dockerignore
