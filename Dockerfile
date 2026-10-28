@@ -27,7 +27,9 @@ RUN --mount=type=cache,target=/root/.m2/repository \
     unset MAVEN_CONFIG && ./mvnw clean install -B -DskipTests \
         -Dmaven.gitcommitid.skip=true -P exec-jar
 
-FROM ${DOCKER_HUB_MIRROR}/library/eclipse-temurin:21
+# Keep the runtime used by the locally validated build; floating :21 changed
+# between full-stack starts. Update this digest through explicit validation.
+FROM ${DOCKER_HUB_MIRROR}/library/eclipse-temurin:21@sha256:23cc5734ff46e776f51ce66eb9ee08444fd47caabec0a95b7eb6e94be2d3696d
 LABEL maintainer="https://www.canner.io/"
 WORKDIR /usr/src/app
 
